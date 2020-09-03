@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<style type="text/css">
+	.body{
+		background-color: pink;
+	}
+</style>
+<script type="text/javascript">
+function zhikong(){
+	value = document.myform.user.value;
+	if(value.length<5){
+		document.getElementById("username").innerHTML="用户名不正确！";
+		return false;
+	}
+}
+</script>
+<script type="text/javascript">
+function meil(){
+	document.getElementById("username").innerHTML = "";
+	return false;
+}
+</script>
+</head>
+<body class="body">
+<form name="myform" onsubmit="return zhikong()">
+	<h1>欢迎登录</h1><br/>
+	用户名称： <input type="text" name="user" onclick="meil()"><span id="username"></span><br/>
+	用户密码： <input type="password" name="pwd"><br/>
+	<input type="submit" name="submit" value="登录"><br/>
+</form>
+</body>
+</html>
