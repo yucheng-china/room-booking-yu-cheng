@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>my report</title>
+<style> 
+	h1{
+		text-align: center;
+	}
+	h2{
+		text-align: center;
+	}
+
+</style>
+</head>
+<body>
+<h1>Report</h1>
+<h2>Room Booking System</h2>
+<p>testing user account: Username:user1  password:user1   ID:abc123</p>
+<p>testing admin account: Username:admin   password:admin</p>
+<h3>Introduction</h3>
+<p>This is my mini room booking system, first welcome to here! You will see the whole system after enter it and make further actions. Login as a user
+and you could use the room booking, view your booking details etc. Login as an administrator then you could use the room add, room delete,
+view customer details etc. The design requirements are listed in the next chapters. 
+</p>
+<br>
+<h3>Sample login details</h3>
+<p>You could login as a user or as an administrator.</p>
+<dl>
+<dt><b>Login as user you need (Username+Password+ID), ID is the primary key.</b></dt>
+<dd>user1: (user1+user1+abc123)---------user2: (user2+user2+abc456)</dd>
+<br>
+<dt><b>Login as administrator you need (Username+Password), only one administrator.</b></dt>
+<dd>admin: (admin+admin)</dd>
+</dl>
+<br>
+<h3>SQL Database Used</h3>
+<p>There are four tables in my application, they are <b>registration</b>, <b>customer</b>, <b>admin_login</b> and <b>room</b>.</p>
+<p><b>Registration</b> table was used to store the user information (not administrator) which include <i><b>USERNAME</b></i>, <i><b>PASSWORD</b></i>, <i><b>ID (primary key)</b></i>, <i><b>EMAIL</b></i>. All of them are String type.</p>
+<p> <b>SQL:</b> create table registration (username varchar2(20), password varchar2(20), id varchar2(15) primary key, email varchar2(20))</p>
+<img src="room_img/registration.jpg" alt="Pulpit rock">
+<br>
+<p><b>Customer</b> table was store the customer information which include <i><b>FIRST_NAME</b></i>, <i><b>LAST_NAME</b></i>, <i><b>EMAIL</b></i>, <i><b>PH_NO</b></i>, <i><b>ROOM_NO</b></i>, <i><b>ID (primary key)</b></i>, <i><b>CHECK_IN</b></i>, <i><b>CHECK_OUT</b></i>. All of them are String type except room_no.</p>
+<p> <b>SQL:</b> create table customer (first_name varchar2(20), last_name varchar2(20), email varchar2(20), ph_no varchar2(20), room_no integer, id varchar2(15) primary key, check_in varchar2(10), check_out varchar2(10))</p>
+<img src="room_img/customer.jpg" alt="Pulpit rock">
+<br>
+<p><b>Admin_login</b> table was store the administrator information which include <i><b>USERNAME</b></i>, <i><b>PASSWORD</b></i>. All of them are String type.</p>
+<p> <b>SQL:</b> create table admin_login (username varchar2(20), password varchar2(20))</p>
+<img src="room_img/admin_login.jpg" alt="Pulpit rock">
+<br>
+<p><b>room</b> table was store the room information which include <i><b>ROOM_NO</b></i>, <i><b>ROOM_CATEGORY</b></i>, <i><b>CAPACITY</b></i>, <i><b>BOOKED_BY</b></i>, <i><b>STATUS</b></i>. All of them are String type except room_no.</p>
+<p> <b>SQL:</b> create table room (room_no integer, room_category varchar2(20), capacity varchar2(20), booked_by varchar2(20), status varchar2(20))</p>
+<img src="room_img/room.jpg" alt="Pulpit rock">
+<br>
+<h3>functionality</h3>
+<p>The functionality could divided as user functions and administrator functions.</p>
+<dl>
+<dt><b>user functions.</b></dt>
+<br>
+<dd>Login in and login out.</dd>
+<dd>Make rooms booking.</dd>
+<dd>View their booking details after book.</dd>
+<dd>Query by email.</dd>
+<br>
+<dt><b>administrator functions.</b></dt>
+<br>
+<dd>Login in and login out.</dd>
+<dd>Insert rooms (room_no should be integer, otherwise will cause view problem in delete)</dd>
+<dd>View room details.</dd>
+<dd>Update room details after inserted (room_no can't be change).</dd>
+<dd>Make room delete after inserted.</dd>
+<dd>View customer details (user who booked rooms already called customer).</dd>
+</dl>
+<br>
+<h3>Some possible problem</h3>
+<p>The browse i used in my application was google chrome. I tested it in other browses and the view problem happend eg. The logout, home button show in different position. But all
+the functions will not be impacted. Therefore, you best run it on goole chrome to have the best view, but it still work in other browses without best view.</p>
+<img src="room_img/chrome.jpg" alt="Pulpit rock">
+<br>
+<p>As i mentioned in last chapter, you may meet the view problem if you add a room with string or other type of room_no. Because the room_no was created with the integer type. Actually, it should not impact too much, but just avoid it please.</p>
+<br>
+<h3>Additional works</h3>
+<p>Actually there are not too much additionally works, some form-validations i have added in my application were very simple. I don't satisfied too much about it</p>
+<p><b>Login-validation:</b> you should provide Username+Passowrd+ID, each of them are required, you can't miss anyone, and these contents must match the database contents respectively.</p>
+<p><b>Room-Booking-validation:</b> room_no and ID cannot be changed, the check_in and check_out date should be standard form and cannot make booking before 10 April. But i should modify it a little bit so that the check_out date must be the same day as check_in date or several days after the check_in date.</p>
+<p><b>registration-validation:</b> you should provide all information as these information are required.</p>
+<br>
+</body>
+</html>
+
